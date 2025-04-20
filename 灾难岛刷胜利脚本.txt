@@ -1,0 +1,138 @@
+local Player = game.Players.LocalPlayer
+local Mouse = Player:GetMouse()
+
+local ScreenGui = Instance.new("ScreenGui")
+ScreenGui.Parent = game:GetService("CoreGui")
+
+local Frame = Instance.new("Frame")
+Frame.Size = UDim2.new(0, 300, 0, 150)
+Frame.Position = UDim2.new(0.5, -150, 0.5, -75)
+Frame.BackgroundColor3 = Color3.new(0.1, 0.1, 0.1)
+Frame.BorderSizePixel = 2
+Frame.BorderColor3 = Color3.new(0.3, 0.3, 0.3)
+Frame.Active = true
+Frame.Draggable = true
+Frame.Parent = ScreenGui
+
+local Title = Instance.new("TextLabel")
+Title.Size = UDim2.new(1, 0, 0, 40)
+Title.Position = UDim2.new(0, 0, 0, 0)
+Title.BackgroundColor3 = Color3.new(0.2, 0.2, 0.2)
+Title.Text = "灾难岛刷胜利脚本"
+Title.TextColor3 = Color3.new(1, 1, 1)
+Title.Font = Enum.Font.SourceSansBold
+Title.TextSize = 20
+Title.Parent = Frame
+
+local TeleportButton = Instance.new("TextButton")
+TeleportButton.Size = UDim2.new(0, 200, 0, 40)
+TeleportButton.Position = UDim2.new(0.5, -100, 0.3, 0)
+TeleportButton.Text = "打开传送"
+TeleportButton.BackgroundColor3 = Color3.new(0, 0.5, 0)
+TeleportButton.TextColor3 = Color3.new(1, 1, 1)
+TeleportButton.Font = Enum.Font.SourceSansBold
+TeleportButton.TextSize = 16
+TeleportButton.Parent = Frame
+
+local CloseTeleportButton = Instance.new("TextButton")
+CloseTeleportButton.Size = UDim2.new(0, 200, 0, 40)
+CloseTeleportButton.Position = UDim2.new(0.5, -100, 0.6, 0)
+CloseTeleportButton.Text = "关闭传送"
+CloseTeleportButton.BackgroundColor3 = Color3.new(0.5, 0, 0)
+CloseTeleportButton.TextColor3 = Color3.new(1, 1, 1)
+CloseTeleportButton.Font = Enum.Font.SourceSansBold
+CloseTeleportButton.TextSize = 16
+CloseTeleportButton.Parent = Frame
+
+local CloseGuiButton = Instance.new("TextButton")
+CloseGuiButton.Size = UDim2.new(0, 30, 0, 30)
+CloseGuiButton.Position = UDim2.new(1, -30, 0, 10)
+CloseGuiButton.Text = "X"
+CloseGuiButton.BackgroundColor3 = Color3.new(0.5, 0, 0)
+CloseGuiButton.TextColor3 = Color3.new(1, 1, 1)
+CloseGuiButton.Font = Enum.Font.SourceSansBold
+CloseGuiButton.TextSize = 18
+CloseGuiButton.Parent = Frame
+
+local AboutButton = Instance.new("TextButton")
+AboutButton.Size = UDim2.new(0, 100, 0, 30)
+AboutButton.Position = UDim2.new(0.5, -50, 0.9, 0)
+AboutButton.Text = "关于"
+AboutButton.BackgroundColor3 = Color3.new(0, 0, 0.5)
+AboutButton.TextColor3 = Color3.new(1, 1, 1)
+AboutButton.Font = Enum.Font.SourceSansBold
+AboutButton.TextSize = 16
+AboutButton.Parent = Frame
+
+local teleportEnabled = false
+
+TeleportButton.MouseButton1Click:Connect(function()
+    teleportEnabled = true
+    TeleportButton.Text = "传送已打开"
+end)
+
+CloseTeleportButton.MouseButton1Click:Connect(function()
+    teleportEnabled = false
+    TeleportButton.Text = "打开传送"
+end)
+
+CloseGuiButton.MouseButton1Click:Connect(function()
+    ScreenGui:Destroy()
+end)
+
+AboutButton.MouseButton1Click:Connect(function()
+    local AboutGui = Instance.new("ScreenGui")
+    AboutGui.Parent = game:GetService("CoreGui")
+
+    local AboutFrame = Instance.new("Frame")
+    AboutFrame.Size = UDim2.new(0, 200, 0, 100)
+    AboutFrame.Position = UDim2.new(0.5, -100, 0.5, -50)
+    AboutFrame.BackgroundColor3 = Color3.new(0.1, 0.1, 0.1)
+    AboutFrame.BorderSizePixel = 2
+    AboutFrame.BorderColor3 = Color3.new(0.3, 0.3, 0.3)
+    AboutFrame.Active = true
+    AboutFrame.Draggable = true
+    AboutFrame.Parent = AboutGui
+
+    local AboutTitle = Instance.new("TextLabel")
+    AboutTitle.Size = UDim2.new(1, 0, 0, 30)
+    AboutTitle.Position = UDim2.new(0, 0, 0, 0)
+    AboutTitle.BackgroundColor3 = Color3.new(0.2, 0.2, 0.2)
+    AboutTitle.Text = "关于"
+    AboutTitle.TextColor3 = Color3.new(1, 1, 1)
+    AboutTitle.Font = Enum.Font.SourceSansBold
+    AboutTitle.TextSize = 18
+    AboutTitle.Parent = AboutFrame
+
+    local AboutText = Instance.new("TextLabel")
+    AboutText.Size = UDim2.new(1, 0, 0, 30)
+    AboutText.Position = UDim2.new(0, 0, 0.5, -15)
+    AboutText.BackgroundTransparency = 1
+    AboutText.Text = "作者:好名字"
+    AboutText.TextColor3 = Color3.new(1, 1, 1)
+    AboutText.Font = Enum.Font.SourceSans
+    AboutText.TextSize = 16
+    AboutText.Parent = AboutFrame
+
+    local AboutCloseButton = Instance.new("TextButton")
+    AboutCloseButton.Size = UDim2.new(0, 30, 0, 30)
+    AboutCloseButton.Position = UDim2.new(1, -30, 0, 0)
+    AboutCloseButton.Text = "X"
+    AboutCloseButton.BackgroundColor3 = Color3.new(0.5, 0, 0)
+    AboutCloseButton.TextColor3 = Color3.new(1, 1, 1)
+    AboutCloseButton.Font = Enum.Font.SourceSansBold
+    AboutCloseButton.TextSize = 18
+    AboutCloseButton.Parent = AboutFrame
+
+    AboutCloseButton.MouseButton1Click:Connect(function()
+        AboutGui:Destroy()
+    end)
+end)
+
+game:GetService("RunService").RenderStepped:Connect(function()
+    if teleportEnabled then
+        if Player.Character and Player.Character:FindFirstChild("HumanoidRootPart") then
+            Player.Character.HumanoidRootPart.CFrame = CFrame.new(416.26, 143.95, -628.53)
+        end
+    end
+end)
